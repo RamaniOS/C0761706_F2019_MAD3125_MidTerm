@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -13,10 +14,12 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.RadioGroup;
 
+import com.example.c0761706_f2019_mad3125_midterm.Models.CRACustomer;
 import com.example.c0761706_f2019_mad3125_midterm.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class DetailEditActivity extends AppCompatActivity {
 
@@ -33,7 +36,7 @@ public class DetailEditActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detailedit);
+        setContentView(R.layout.activity_detail_edit);
         initViews();
     }
 
@@ -49,8 +52,7 @@ public class DetailEditActivity extends AppCompatActivity {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                Log.d("TAG", "CALLED");
-                onRadioButtonChanged(group, checkedId);
+                onRadioButtonChanged(checkedId);
             }
         });
         txtBirthDate.setInputType(InputType.TYPE_NULL);
@@ -60,6 +62,12 @@ public class DetailEditActivity extends AppCompatActivity {
                     closeKeyboard();
                     openDatePicker();
                 }
+            }
+        });
+        txtBirthDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDatePicker();
             }
         });
         btnCalculate.setOnClickListener(new View.OnClickListener() {
@@ -84,10 +92,11 @@ public class DetailEditActivity extends AppCompatActivity {
                         txtBirthDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                     }
                 }, year, month, day);
+        datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
         datePickerDialog.show();
     }
 
-    private void onRadioButtonChanged(RadioGroup group, int checkedId) {
+    private void onRadioButtonChanged(int checkedId) {
         switch (checkedId) {
             case R.id.radioMale:
                 Log.d("kk", "MALE");
@@ -101,13 +110,25 @@ public class DetailEditActivity extends AppCompatActivity {
         }
     }
 
-    private void calculateButtonClicked() {
-
-    }
-
     private void closeKeyboard() {
         InputMethodManager inputManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
         inputManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+    }
 
+    private void calculateButtonClicked() {
+        String sin = txtSIN.getText().toString();
+        String fName = txtFName.getText().toString();
+        String lName = txtLName.getText().toString();
+        String dob = txtBirthDate.getText().toString();
+        String gender = "MALE";
+        String gross = txtGrossIncome.getText().toString();
+        String rrsp = txtRRSP.getText().toString();
+
+        CRACustomer customer = new CRACustomer(sin, fName, lName, dob, gender, gross, rrsp);
+        Log.d("FULL", customer.fullName());
+        Log.d("AGE", customer.getAge());
+
+        Intent intent = new Intent(this, ShowDetailActivity.class);
+        startActivity(intent);
     }
 }
