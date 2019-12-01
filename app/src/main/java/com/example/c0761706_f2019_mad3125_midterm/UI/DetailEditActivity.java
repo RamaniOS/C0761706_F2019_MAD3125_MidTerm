@@ -142,6 +142,30 @@ public class DetailEditActivity extends AppCompatActivity {
         detailList.add(sinDetail);
         Detail fullName = new Detail(customer.fullNameKey(), customer.fullName());
         detailList.add(fullName);
+        Detail dob = new Detail(customer.birthDateKey(), customer.getDob());
+        detailList.add(dob);
+        Detail gender = new Detail(customer.genderKey(), customer.getGender());
+        detailList.add(gender);
+        Detail age = new Detail(customer.ageKey(), customer.getAge());
+        detailList.add(age);
+        Detail taxFillingDate = new Detail(customer.taxDateKey(), customer.taxFilingDate());
+        detailList.add(taxFillingDate);
+        Detail fTax = new Detail(customer.fedralKey(), customer.taxFilingDate());
+        detailList.add(fTax);
+        Detail pTax = new Detail(customer.provinceKey(), customer.taxFilingDate());
+        detailList.add(pTax);
+        Detail cpp = new Detail(customer.cppKey(), customer.taxFilingDate());
+        detailList.add(cpp);
+        Detail ei = new Detail(customer.eiKey(), customer.taxFilingDate());
+        detailList.add(ei);
+        Detail rrspCon = new Detail(customer.rrspContributedKey(), customer.taxFilingDate());
+        detailList.add(rrspCon);
+        Detail caryRRsp = new Detail(customer.carryRRSPKey(), customer.taxFilingDate());
+        detailList.add(caryRRsp);
+        Detail totalPayIncome = new Detail(customer.totalPayableTaxKey(), customer.taxFilingDate());
+        detailList.add(totalPayIncome);
+        Detail totalPaidTax = new Detail(customer.totalPaidTaxKey(), customer.taxFilingDate());
+        detailList.add(totalPaidTax);
         return  detailList;
     }
 }

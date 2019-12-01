@@ -33,6 +33,10 @@ public class CRACustomer {
         return "Full Name";
     }
 
+    public String birthDateKey() {
+        return  "Birth Of Date";
+    }
+
     public String genderKey() {
         return "Gender";
     }
@@ -162,5 +166,9 @@ public class CRACustomer {
             age--;
         }
         return String.valueOf(age);
+    }
+
+    public String taxFilingDate() {
+        return "24-JAN-2020";
     }
 }
