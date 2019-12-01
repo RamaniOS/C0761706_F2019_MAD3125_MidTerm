@@ -25,6 +25,62 @@ public class CRACustomer {
         this.rrspConrtibuted = rrspConrtibuted;
     }
 
+    public String sinKey() {
+        return "Person SIN Number";
+    }
+
+    public String fullNameKey() {
+        return "Full Name";
+    }
+
+    public String genderKey() {
+        return "Gender";
+    }
+
+    public String ageKey() {
+        return "Age";
+    }
+
+    public String taxDateKey() {
+        return "Tax Filing date";
+    }
+
+    public String incomeKey() {
+        return "Gross income";
+    }
+
+    public String rrspContributedKey() {
+        return "RRSP Contributed";
+    }
+
+    public String fedralKey() {
+        return "Federal tax";
+    }
+
+    public String provinceKey() {
+        return "Provincial Tax";
+    }
+
+    public String cppKey() {
+        return "CPP";
+    }
+
+    public String eiKey() {
+        return "EI";
+    }
+
+    public String carryRRSPKey() {
+        return "Carry forward RRSP";
+    }
+
+    public String totalPayableTaxKey() {
+        return "Total Taxable Income";
+    }
+
+    public String totalPaidTaxKey() {
+        return "Total Tax Payed";
+    }
+
     public String getSin() {
         return sin;
     }

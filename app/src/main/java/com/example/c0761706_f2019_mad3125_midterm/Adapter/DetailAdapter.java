@@ -5,21 +5,25 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.c0761706_f2019_mad3125_midterm.Models.CRACustomer;
+import com.example.c0761706_f2019_mad3125_midterm.Models.Detail;
 import com.example.c0761706_f2019_mad3125_midterm.R;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
 public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailViewHolder> {
 
-    List<CRACustomer> items;
+    List<Detail> items;
 
-    public DetailAdapter() {
-        //this.items = items;
+    public DetailAdapter(List<Detail> items) {
+        this.items = items;
     }
 
     @NonNull
@@ -31,22 +35,28 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailView
 
     @Override
     public void onBindViewHolder(@NonNull DetailViewHolder holder, int position) {
-        Log.d("POS", String.valueOf(position));
-        if (position != 9) {
+        if (position != items.size() - 1) {
             holder.bottomView.setVisibility(View.GONE);
         }
+        Detail detail = items.get(position);
+        holder.txtKey.setText(detail.getKey());
+        holder.txtValue.setText(detail.getValue());
     }
 
     @Override
     public int getItemCount() {
-        return 10;//items.size();
+        return items.size();
     }
 
     public static class DetailViewHolder extends RecyclerView.ViewHolder {
         public View bottomView;
+        public TextView txtKey;
+        public TextView txtValue;
         public DetailViewHolder(@NonNull View itemView) {
             super(itemView);
             bottomView = itemView.findViewById(R.id.viewBottom);
+            txtKey = itemView.findViewById(R.id.txtKey);
+            txtValue = itemView.findViewById(R.id.txtValue);
         }
     }
 }

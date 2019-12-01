@@ -1,11 +1,13 @@
 package com.example.c0761706_f2019_mad3125_midterm.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -15,11 +17,14 @@ import android.widget.DatePicker;
 import android.widget.RadioGroup;
 
 import com.example.c0761706_f2019_mad3125_midterm.Models.CRACustomer;
+import com.example.c0761706_f2019_mad3125_midterm.Models.Detail;
 import com.example.c0761706_f2019_mad3125_midterm.R;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class DetailEditActivity extends AppCompatActivity {
 
@@ -125,10 +130,18 @@ public class DetailEditActivity extends AppCompatActivity {
         String rrsp = txtRRSP.getText().toString();
 
         CRACustomer customer = new CRACustomer(sin, fName, lName, dob, gender, gross, rrsp);
-        Log.d("FULL", customer.fullName());
-        Log.d("AGE", customer.getAge());
-
+        List list = getDetails(customer);
         Intent intent = new Intent(this, ShowDetailActivity.class);
+        intent.putParcelableArrayListExtra("details", (ArrayList<? extends Parcelable>) list);
         startActivity(intent);
+    }
+
+    private List<Detail> getDetails(CRACustomer customer) {
+        List<Detail> detailList = new ArrayList<>();
+        Detail sinDetail = new Detail(customer.sinKey(), customer.getSin());
+        detailList.add(sinDetail);
+        Detail fullName = new Detail(customer.fullNameKey(), customer.fullName());
+        detailList.add(fullName);
+        return  detailList;
     }
 }
