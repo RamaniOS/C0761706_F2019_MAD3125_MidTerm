@@ -3,9 +3,12 @@ package com.example.c0761706_f2019_mad3125_midterm.UI;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 
@@ -41,10 +44,12 @@ public class DetailEditActivity extends AppCompatActivity {
         txtRRSP = findViewById(R.id.txtRRSP);
         btnCalculate = findViewById(R.id.btnCalculate);
         txtBirthDate.setInputType(InputType.TYPE_NULL);
-        txtBirthDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDatePicker();
+        txtBirthDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+                    closeKeyboard();
+                    openDatePicker();
+                }
             }
         });
         btnCalculate.setOnClickListener(new View.OnClickListener() {
@@ -56,10 +61,11 @@ public class DetailEditActivity extends AppCompatActivity {
     }
 
     private void openDatePicker() {
-        final Calendar cldr = Calendar.getInstance();
-        int day = cldr.get(Calendar.DAY_OF_MONTH);
-        int month = cldr.get(Calendar.MONTH);
-        int year = cldr.get(Calendar.YEAR);
+
+        final Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
         // date picker dialog
         datePickerDialog = new DatePickerDialog(DetailEditActivity.this,
                 new DatePickerDialog.OnDateSetListener() {
@@ -72,6 +78,12 @@ public class DetailEditActivity extends AppCompatActivity {
     }
 
     private void calculateButtonClicked() {
+
+    }
+
+    private void closeKeyboard() {
+        InputMethodManager inputManager = (InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
     }
 }
