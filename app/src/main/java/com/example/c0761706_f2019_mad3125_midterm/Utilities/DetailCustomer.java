@@ -1,0 +1,62 @@
+package com.example.c0761706_f2019_mad3125_midterm.Utilities;
+
+import com.example.c0761706_f2019_mad3125_midterm.Models.CRACustomer;
+import com.example.c0761706_f2019_mad3125_midterm.Models.Detail;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class DetailCustomer {
+
+    private DetailCustomer() {}
+
+    public static List<Detail> getDetails(CRACustomer customer) {
+        List<Detail> detailList = new ArrayList<>();
+        // sin
+        Detail sinDetail = new Detail(customer.sinKey(), customer.getSin());
+        detailList.add(sinDetail);
+        // full name
+        Detail fullName = new Detail(customer.fullNameKey(), customer.fullName());
+        detailList.add(fullName);
+        // dob
+        Detail dob = new Detail(customer.birthDateKey(), customer.getDob());
+        detailList.add(dob);
+        // gender
+        Detail gender = new Detail(customer.genderKey(), customer.getGender());
+        detailList.add(gender);
+        // age
+        Detail age = new Detail(customer.ageKey(), customer.getAge());
+        detailList.add(age);
+        // tax filing date
+        Detail taxFillingDate = new Detail(customer.taxDateKey(), customer.taxFilingDate());
+        detailList.add(taxFillingDate);
+        // federal tax
+        Detail fTax = new Detail(customer.fedralKey(), customer.taxFilingDate());
+        detailList.add(fTax);
+        // province tax
+        Detail pTax = new Detail(customer.provinceKey(), customer.taxFilingDate());
+        detailList.add(pTax);
+        // cpp
+        Detail cpp = new Detail(customer.cppKey(), customer.taxFilingDate());
+        detailList.add(cpp);
+        // EI
+        Detail ei = new Detail(customer.eiKey(), customer.taxFilingDate());
+        detailList.add(ei);
+        // RRSP contributed
+        Detail rrspCon = new Detail(customer.rrspContributedKey(), customer.taxFilingDate());
+        detailList.add(rrspCon);
+        // RRSP
+        Detail caryRRsp = new Detail(customer.carryRRSPKey(), customer.taxFilingDate());
+        detailList.add(caryRRsp);
+        // total payable income
+        Detail totalPayIncome = new Detail(customer.totalPayableTaxKey(), customer.taxFilingDate());
+        detailList.add(totalPayIncome);
+        // total paid tax
+        Detail totalPaidTax = new Detail(customer.totalPaidTaxKey(), customer.taxFilingDate());
+        detailList.add(totalPaidTax);
+        // total income
+        Detail income = new Detail(customer.incomeKey(), customer.getGrossIncome());
+        detailList.add(income);
+        return detailList;
+    }
+}
