@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.RadioGroup;
 
 import com.example.c0761706_f2019_mad3125_midterm.R;
 import com.google.android.material.textfield.TextInputEditText;
@@ -27,6 +28,7 @@ public class DetailEditActivity extends AppCompatActivity {
     private TextInputEditText txtRRSP;
     private Button btnCalculate;
     private DatePickerDialog datePickerDialog;
+    private RadioGroup radioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +45,18 @@ public class DetailEditActivity extends AppCompatActivity {
         txtGrossIncome = findViewById(R.id.txtGross);
         txtRRSP = findViewById(R.id.txtRRSP);
         btnCalculate = findViewById(R.id.btnCalculate);
+        radioGroup = findViewById(R.id.radioGroup);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                Log.d("TAG", "CALLED");
+                onRadioButtonChanged(group, checkedId);
+            }
+        });
         txtBirthDate.setInputType(InputType.TYPE_NULL);
         txtBirthDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus) {
+                if (hasFocus) {
                     closeKeyboard();
                     openDatePicker();
                 }
@@ -77,12 +87,26 @@ public class DetailEditActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
+    private void onRadioButtonChanged(RadioGroup group, int checkedId) {
+        switch (checkedId) {
+            case R.id.radioMale:
+                Log.d("kk", "MALE");
+                break;
+            case R.id.radioFeMale:
+                Log.d("ll", "FEMALE");
+                break;
+            case R.id.radioOther:
+                Log.d("kk", "OTHER");
+                break;
+        }
+    }
+
     private void calculateButtonClicked() {
 
     }
 
     private void closeKeyboard() {
-        InputMethodManager inputManager = (InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager inputManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
         inputManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
     }
