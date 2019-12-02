@@ -9,17 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.ShowDetailActivity"
-            android:label="Show Details"
-            android:parentActivityName=".UI.DetailEditActivity">
-        </activity>
-        <activity android:name=".UI.DetailEditActivity"
-            android:label="Enter Details">
+        <activity android:name=".UI.HomeActivity"
+            android:label="Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".UI.ShowDetailActivity"
+            android:label="Show Details"
+            android:parentActivityName=".UI.HomeActivity"></activity>
+        <activity
+            android:name=".UI.DetailEditActivity"
+            android:label="Enter Details"
+            android:parentActivityName=".UI.HomeActivity">
         </activity>
 
         <meta-data

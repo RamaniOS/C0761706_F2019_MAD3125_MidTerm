@@ -1,11 +1,9 @@
 package com.example.c0761706_f2019_mad3125_midterm.Models;
 
-import android.util.Log;
 
 import com.example.c0761706_f2019_mad3125_midterm.Utilities.Calculator;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;

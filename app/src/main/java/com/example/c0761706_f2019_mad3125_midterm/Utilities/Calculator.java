@@ -1,7 +1,5 @@
 package com.example.c0761706_f2019_mad3125_midterm.Utilities;
 
-import android.util.Log;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
