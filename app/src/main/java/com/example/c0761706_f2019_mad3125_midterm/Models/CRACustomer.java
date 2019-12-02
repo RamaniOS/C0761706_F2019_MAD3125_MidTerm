@@ -18,8 +18,6 @@ public class CRACustomer {
     private String grossIncome;
     private String rrspConrtibuted;
 
-    private static final int MAX_RSSP = 18000;
-
     public CRACustomer(String sin, String fName, String lName, String dob, String gender, String grossIncome, String rrspConrtibuted) {
         this.sin = sin;
         this.fName = fName;
@@ -141,7 +139,7 @@ public class CRACustomer {
     public String getRemainingRSSP() {
         if (getRrspConrtibuted() == null) return "$0";
         double rrsp = Double.parseDouble(getRrspConrtibuted());
-        double remaining = MAX_RSSP - rrsp;
+        double remaining = getMaxRRSP() - rrsp;
         return "$" + remaining;
     }
 
@@ -149,8 +147,8 @@ public class CRACustomer {
         double cpp = Double.parseDouble(getCPP().replace("$", ""));
         double ei = Double.parseDouble(getEI().replace("$", ""));
         double contributed = Double.parseDouble(getRrspConrtibuted().replace("$", ""));
-        if (contributed > MAX_RSSP) {
-            contributed = MAX_RSSP;
+        if (contributed > getMaxRRSP()) {
+            contributed = getMaxRRSP();
         }
         double total = cpp + ei + contributed;
         double gross = Double.parseDouble(getGrossIncome());
@@ -171,5 +169,10 @@ public class CRACustomer {
         double pT = Double.parseDouble(getProviceTax().replace("$", ""));
         double fT = Double.parseDouble(getFedralTax().replace("$", ""));
         return "$" + (pT+fT);
+    }
+
+    public double getMaxRRSP() {
+        double income = Double.parseDouble(grossIncome);
+        return (income * 18) / 100;
     }
 }

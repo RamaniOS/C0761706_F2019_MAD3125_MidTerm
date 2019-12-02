@@ -9,5 +9,6 @@
     </style>
     <style name="style_error_appearance" parent="@android:style/TextAppearance">
         <item name="android:textStyle">bold</item>
+        <item name="colorAccent">@color/design_default_color_error</item>
     </style>
 </resources>
