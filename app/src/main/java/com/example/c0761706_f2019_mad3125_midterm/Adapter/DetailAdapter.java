@@ -38,11 +38,6 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailView
         if ((detail.getValue() == null) && detail.getValue().trim().length() == 0) return;
         holder.txtKey.setText(detail.getKey());
         holder.txtValue.setText(detail.getValue());
-//        if (Double.parseDouble(detail.getValue())<0) {
-//            holder.txtValue.setTextColor(Color.RED);
-//        } else {
-//            holder.txtValue.setTextColor(Color.BLACK);
-//        }
     }
 
     @Override

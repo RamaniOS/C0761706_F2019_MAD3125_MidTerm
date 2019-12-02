@@ -2,6 +2,7 @@ package com.example.c0761706_f2019_mad3125_midterm.Utilities;
 
 import com.example.c0761706_f2019_mad3125_midterm.Models.CRACustomer;
 import com.example.c0761706_f2019_mad3125_midterm.Models.Detail;
+import com.example.c0761706_f2019_mad3125_midterm.Models.HomeDetail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +58,15 @@ public class DetailCustomer {
         // total paid tax
         Detail totalPaidTax = new Detail(customer.totalPaidTaxKey(), customer.getTotalTax());
         detailList.add(totalPaidTax);
+        return detailList;
+    }
+
+    public static List<HomeDetail> getHomeDetails() {
+        List<HomeDetail> detailList = new ArrayList<>();
+        CRACustomer customer1 = new CRACustomer("123456789", "John", "Doe", "12-Dec-1999", "Male", "100000", "20000");
+        List<Detail> detail = getDetails(customer1);
+        HomeDetail dummy = new HomeDetail(customer1.getSin(), customer1.fullName(), detail);
+        detailList.add(dummy);
         return detailList;
     }
 }

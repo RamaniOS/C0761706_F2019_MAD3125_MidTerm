@@ -29,7 +29,7 @@ public class ShowDetailActivity extends AppCompatActivity {
 
     private void initViews() {
         details = new ArrayList<>();
-        details = getIntent().getParcelableArrayListExtra("details");
+        details = getIntent().getParcelableArrayListExtra(DetailEditActivity.INTENT_KEY);
         recyclerViewDetail = findViewById(R.id.recyclerviewDetail);
         detailAdapter = new DetailAdapter(details);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);

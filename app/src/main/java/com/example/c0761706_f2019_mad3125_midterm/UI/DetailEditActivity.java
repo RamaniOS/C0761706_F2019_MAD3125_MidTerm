@@ -45,6 +45,8 @@ public class DetailEditActivity extends AppCompatActivity {
     private TextInputLayout birthLayout;
 
     private static final String ERROR_MESSAGE = "Not eligible to file tax for current year 2019";
+    public static final String INTENT_KEY = "details";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,7 +148,7 @@ public class DetailEditActivity extends AppCompatActivity {
             CRACustomer customer = new CRACustomer(sin, fName, lName, dob, gender, gross, rrsp);
             List list = DetailCustomer.getDetails(customer);
             Intent intent = new Intent(this, ShowDetailActivity.class);
-            intent.putParcelableArrayListExtra("details", (ArrayList<? extends Parcelable>) list);
+            intent.putParcelableArrayListExtra(INTENT_KEY, (ArrayList<? extends Parcelable>) list);
             startActivity(intent);
         }
     }
