@@ -1,5 +1,7 @@
 package com.example.c0761706_f2019_mad3125_midterm.Adapter;
 
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +40,17 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailView
         if ((detail.getValue() == null) && detail.getValue().trim().length() == 0) return;
         holder.txtKey.setText(detail.getKey());
         holder.txtValue.setText(detail.getValue());
+        Log.d("Model", detail.getKey());
+        if (detail.getKey().toLowerCase().equalsIgnoreCase("Carry forward RRSP")) {
+            Log.d("Inside", "If");
+            double value = Double.parseDouble(detail.getValue().replace("$", ""));
+            if (value < 0) {
+                Log.d("Inside", "another if");
+                holder.txtValue.setTextColor(Color.RED);
+            } else {
+                holder.txtValue.setTextColor(Color.BLACK);
+            }
+        }
     }
 
     @Override
