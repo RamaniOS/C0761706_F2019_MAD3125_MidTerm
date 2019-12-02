@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -20,8 +21,10 @@ import android.widget.Toast;
 
 import com.example.c0761706_f2019_mad3125_midterm.Models.CRACustomer;
 import com.example.c0761706_f2019_mad3125_midterm.R;
+import com.example.c0761706_f2019_mad3125_midterm.Utilities.Calculator;
 import com.example.c0761706_f2019_mad3125_midterm.Utilities.DetailCustomer;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,7 +44,9 @@ public class DetailEditActivity extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
     private RadioGroup radioGroup;
     private RadioButton genderButton;
+    private TextInputLayout birthLayout;
 
+    private static final String ERROR_MESSAGE = "Not eligible to file tax for current year 2019";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,11 +64,14 @@ public class DetailEditActivity extends AppCompatActivity {
         btnCalculate = findViewById(R.id.btnCalculate);
         radioGroup = findViewById(R.id.radioGroup);
         txtBirthDate.setInputType(InputType.TYPE_NULL);
+        birthLayout = findViewById(R.id.textInputLayout4);
         txtBirthDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
                     closeKeyboard();
                     openDatePicker();
+                } else {
+                    checkEligibleDob();
                 }
             }
         });
@@ -119,6 +127,9 @@ public class DetailEditActivity extends AppCompatActivity {
         String gross = txtGrossIncome.getText().toString();
         String rrsp = txtRRSP.getText().toString();
 
+        // check dob
+        checkEligibleDob();
+
         if (sin.trim().length() != 9) {
             showAlert("SIN Should be of 9 digits.");
         } else if (fName.trim().isEmpty()) {
@@ -127,6 +138,8 @@ public class DetailEditActivity extends AppCompatActivity {
             showAlert("Please enter Last name");
         } else if (dob.trim().isEmpty()) {
             showAlert("Please enter Date of birth");
+        } else if (birthLayout.getError() != null) {
+            showAlert(birthLayout.getError().toString());
         } else if (gross.trim().isEmpty()) {
             showAlert("Please enter Gross Income");
         } else if (rrsp.trim().isEmpty()) {
@@ -140,8 +153,14 @@ public class DetailEditActivity extends AppCompatActivity {
         }
     }
 
-    private void showToast(String message) {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    private void checkEligibleDob() {
+        String dob = txtBirthDate.getText().toString();
+        int age = Integer.parseInt(Calculator.getAge(dob));
+        if (age < 18) {
+            birthLayout.setError(ERROR_MESSAGE.toUpperCase());
+        } else {
+            birthLayout.setError(null);
+        }
     }
 
     private void showAlert(String message) {

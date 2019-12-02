@@ -49,7 +49,7 @@ public class CRACustomer {
     }
 
     public String ageKey() {
-        return "Age";
+        return "Age (Year)";
     }
 
     public String taxDateKey() {
@@ -117,26 +117,7 @@ public class CRACustomer {
     }
 
     public String getAge() {
-        Date date = null;
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            date = sdf.parse(dob);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        if (date == null) return "0 Year";
-        Calendar dob = Calendar.getInstance();
-        Calendar today = Calendar.getInstance();
-        dob.setTime(date);
-        int year = dob.get(Calendar.YEAR);
-        int month = dob.get(Calendar.MONTH);
-        int day = dob.get(Calendar.DAY_OF_MONTH);
-        dob.set(year, month + 1, day);
-        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
-        if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)) {
-            age--;
-        }
-        return String.valueOf(age) + " Years";
+        return Calculator.getAge(dob);
     }
 
     public String taxFilingDate() {

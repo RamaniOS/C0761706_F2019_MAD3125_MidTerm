@@ -2,6 +2,11 @@ package com.example.c0761706_f2019_mad3125_midterm.Utilities;
 
 import android.util.Log;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Calculator {
 
     private static final int MAX_CPPAMOUNT = 57400;
@@ -10,6 +15,22 @@ public class Calculator {
     private static final double EIAMOUNT_DEFAULT = 860.22;
 
     private Calculator() {
+    }
+
+    public static String getAge(String birthDate) {
+        Date date = null;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+        try {
+            date = sdf.parse(birthDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if (date == null) return "0";
+        Calendar dob = Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
+        dob.setTime(date);
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+        return String.valueOf(age);
     }
 
     public static String performCPP(String income) {
