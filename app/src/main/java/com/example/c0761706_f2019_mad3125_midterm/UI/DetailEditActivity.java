@@ -20,6 +20,7 @@ import android.widget.RadioGroup;
 
 import com.example.c0761706_f2019_mad3125_midterm.Models.CRACustomer;
 import com.example.c0761706_f2019_mad3125_midterm.R;
+import com.example.c0761706_f2019_mad3125_midterm.Shared.DataManager;
 import com.example.c0761706_f2019_mad3125_midterm.Utilities.Calculator;
 import com.example.c0761706_f2019_mad3125_midterm.Utilities.DetailCustomer;
 import com.google.android.material.textfield.TextInputEditText;
@@ -147,6 +148,7 @@ public class DetailEditActivity extends AppCompatActivity {
             showAlert("Please enter RRSP contribution");
         } else {
             CRACustomer customer = new CRACustomer(sin, fName, lName, dob, gender, gross, rrsp);
+            DataManager.addNewCustomer(customer);
             List list = DetailCustomer.getDetails(customer);
             Intent intent = new Intent(this, ShowDetailActivity.class);
             intent.putParcelableArrayListExtra(INTENT_KEY, (ArrayList<? extends Parcelable>) list);
