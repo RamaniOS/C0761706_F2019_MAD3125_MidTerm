@@ -31,13 +31,13 @@ public class DetailCustomer {
         Detail taxFillingDate = new Detail(customer.taxDateKey(), customer.taxFilingDate());
         detailList.add(taxFillingDate);
         // total income
-        Detail income = new Detail(customer.incomeKey(), customer.getGrossIncome());
+        Detail income = new Detail(customer.incomeKey(), "$" + customer.getGrossIncome());
         detailList.add(income);
         // federal tax
         Detail fTax = new Detail(customer.fedralKey(), customer.taxFilingDate());
         detailList.add(fTax);
         // province tax
-        Detail pTax = new Detail(customer.provinceKey(), customer.taxFilingDate());
+        Detail pTax = new Detail(customer.provinceKey(), customer.getProviceTax());
         detailList.add(pTax);
         // cpp
         Detail cpp = new Detail(customer.cppKey(), customer.getCPP());
@@ -46,7 +46,7 @@ public class DetailCustomer {
         Detail ei = new Detail(customer.eiKey(), customer.getEI());
         detailList.add(ei);
         // RRSP contributed
-        Detail rrspCon = new Detail(customer.rrspContributedKey(), customer.getRrspConrtibuted());
+        Detail rrspCon = new Detail(customer.rrspContributedKey(), "$" + customer.getRrspConrtibuted());
         detailList.add(rrspCon);
         // RRSP carry forward
         Detail caryRRsp = new Detail(customer.carryRRSPKey(), customer.getRemainingRSSP());

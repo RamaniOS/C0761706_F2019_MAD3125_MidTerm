@@ -69,7 +69,7 @@ public class CRACustomer {
     }
 
     public String provinceKey() {
-        return "Provincial Tax";
+        return "Provincial Tax (Ontario)";
     }
 
     public String cppKey() {
@@ -177,5 +177,9 @@ public class CRACustomer {
         double gross = Double.parseDouble(getGrossIncome());
         double totalTaxable = gross - total;
         return "$" + totalTaxable;
+    }
+
+    public String getProviceTax() {
+        return Calculator.performProvinceTax(getTotalTaxableAmount());
     }
 }
