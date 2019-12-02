@@ -1,9 +1,11 @@
 package com.example.c0761706_f2019_mad3125_midterm.UI;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -14,6 +16,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.c0761706_f2019_mad3125_midterm.Models.CRACustomer;
 import com.example.c0761706_f2019_mad3125_midterm.R;
@@ -116,10 +119,49 @@ public class DetailEditActivity extends AppCompatActivity {
         String gross = txtGrossIncome.getText().toString();
         String rrsp = txtRRSP.getText().toString();
 
-        CRACustomer customer = new CRACustomer(sin, fName, lName, dob, gender, gross, rrsp);
-        List list = DetailCustomer.getDetails(customer);
-        Intent intent = new Intent(this, ShowDetailActivity.class);
-        intent.putParcelableArrayListExtra("details", (ArrayList<? extends Parcelable>) list);
-        startActivity(intent);
+        if (sin.trim().length() != 9) {
+            showAlert("SIN Should be of 9 digits.");
+        } else if (fName.trim().isEmpty()) {
+            showAlert("Please enter First name");
+        } else if (lName.trim().isEmpty()) {
+            showAlert("Please enter Last name");
+        } else if (dob.trim().isEmpty()) {
+            showAlert("Please enter Date of birth");
+        } else if (gross.trim().isEmpty()) {
+            showAlert("Please enter Gross Income");
+        } else if (rrsp.trim().isEmpty()) {
+            showAlert("Please enter RRSP contribution");
+        } else {
+            CRACustomer customer = new CRACustomer(sin, fName, lName, dob, gender, gross, rrsp);
+            List list = DetailCustomer.getDetails(customer);
+            Intent intent = new Intent(this, ShowDetailActivity.class);
+            intent.putParcelableArrayListExtra("details", (ArrayList<? extends Parcelable>) list);
+            startActivity(intent);
+        }
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void showAlert(String message) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Alert!");
+        alertDialogBuilder.setMessage(message);
+        alertDialogBuilder.setIcon(R.drawable.ic_action_alert);
+        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
     }
 }
