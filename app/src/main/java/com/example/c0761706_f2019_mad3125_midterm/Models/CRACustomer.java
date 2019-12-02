@@ -155,7 +155,8 @@ public class CRACustomer {
         double total = cpp + ei + contributed;
         double gross = Double.parseDouble(getGrossIncome());
         double totalTaxable = gross - total;
-        return "$" + totalTaxable;
+        double roundOff = Math.round(totalTaxable * 100.0) / 100.0;
+        return "$" + roundOff;
     }
 
     public String getProviceTax() {
