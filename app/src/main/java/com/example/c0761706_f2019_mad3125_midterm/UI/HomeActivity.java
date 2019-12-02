@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import com.example.c0761706_f2019_mad3125_midterm.Adapter.HomeAdapter;
 import com.example.c0761706_f2019_mad3125_midterm.Models.HomeDetail;
 import com.example.c0761706_f2019_mad3125_midterm.R;
+import com.example.c0761706_f2019_mad3125_midterm.Shared.DataManager;
 import com.example.c0761706_f2019_mad3125_midterm.Utilities.DetailCustomer;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void initViews() {
         items = new ArrayList<>();
-        items = DetailCustomer.getHomeDetails();
+        items = DataManager.getInstance().getHomeDetails();
         homeRecyclerView = findViewById(R.id.recycleViewHome);
         homeAdapter = new HomeAdapter(items);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);

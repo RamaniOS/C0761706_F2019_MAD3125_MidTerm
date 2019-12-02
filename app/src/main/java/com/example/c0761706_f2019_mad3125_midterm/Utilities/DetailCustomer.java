@@ -60,13 +60,4 @@ public class DetailCustomer {
         detailList.add(totalPaidTax);
         return detailList;
     }
-
-    public static List<HomeDetail> getHomeDetails() {
-        List<HomeDetail> detailList = new ArrayList<>();
-        CRACustomer customer1 = new CRACustomer("123456789", "John", "Doe", "12-Dec-1999", "Male", "100000", "20000");
-        List<Detail> detail = getDetails(customer1);
-        HomeDetail dummy = new HomeDetail(customer1.getSin(), customer1.fullName(), detail);
-        detailList.add(dummy);
-        return detailList;
-    }
 }

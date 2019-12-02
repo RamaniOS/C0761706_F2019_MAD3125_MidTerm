@@ -36,8 +36,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     @Override
     public void onBindViewHolder(@NonNull final HomeViewHolder holder, final int position) {
         final HomeDetail homeDetail = items.get(position);
-        holder.txtSin.setText(homeDetail.getSin());
-        holder.txtName.setText(homeDetail.getName());
+        holder.txtSin.setText("SIN: " + homeDetail.getSin());
+        holder.txtName.setText("Name: " + homeDetail.getName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
