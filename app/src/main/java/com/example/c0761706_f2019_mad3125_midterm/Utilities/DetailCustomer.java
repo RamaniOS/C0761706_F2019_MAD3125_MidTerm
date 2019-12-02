@@ -55,7 +55,7 @@ public class DetailCustomer {
         Detail totalPayIncome = new Detail(customer.totalPayableTaxKey(), customer.getTotalTaxableAmount());
         detailList.add(totalPayIncome);
         // total paid tax
-        Detail totalPaidTax = new Detail(customer.totalPaidTaxKey(), customer.taxFilingDate());
+        Detail totalPaidTax = new Detail(customer.totalPaidTaxKey(), customer.getTotalTax());
         detailList.add(totalPaidTax);
         return detailList;
     }

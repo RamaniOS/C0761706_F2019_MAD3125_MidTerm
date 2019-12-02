@@ -186,4 +186,10 @@ public class CRACustomer {
     public String getFedralTax() {
         return Calculator.performFedralTax(getTotalTaxableAmount());
     }
+
+    public String getTotalTax() {
+        double pT = Double.parseDouble(getProviceTax().replace("$", ""));
+        double fT = Double.parseDouble(getFedralTax().replace("$", ""));
+        return "$" + (pT+fT);
+    }
 }
