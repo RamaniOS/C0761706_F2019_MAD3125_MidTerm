@@ -30,6 +30,9 @@ public class DetailCustomer {
         // tax filing date
         Detail taxFillingDate = new Detail(customer.taxDateKey(), customer.taxFilingDate());
         detailList.add(taxFillingDate);
+        // total income
+        Detail income = new Detail(customer.incomeKey(), customer.getGrossIncome());
+        detailList.add(income);
         // federal tax
         Detail fTax = new Detail(customer.fedralKey(), customer.taxFilingDate());
         detailList.add(fTax);
@@ -37,16 +40,16 @@ public class DetailCustomer {
         Detail pTax = new Detail(customer.provinceKey(), customer.taxFilingDate());
         detailList.add(pTax);
         // cpp
-        Detail cpp = new Detail(customer.cppKey(), customer.taxFilingDate());
+        Detail cpp = new Detail(customer.cppKey(), customer.getCPP());
         detailList.add(cpp);
         // EI
-        Detail ei = new Detail(customer.eiKey(), customer.taxFilingDate());
+        Detail ei = new Detail(customer.eiKey(), customer.getEI());
         detailList.add(ei);
         // RRSP contributed
-        Detail rrspCon = new Detail(customer.rrspContributedKey(), customer.taxFilingDate());
+        Detail rrspCon = new Detail(customer.rrspContributedKey(), customer.getRrspConrtibuted());
         detailList.add(rrspCon);
-        // RRSP
-        Detail caryRRsp = new Detail(customer.carryRRSPKey(), customer.taxFilingDate());
+        // RRSP carry forward
+        Detail caryRRsp = new Detail(customer.carryRRSPKey(), customer.getRemainingRSSP());
         detailList.add(caryRRsp);
         // total payable income
         Detail totalPayIncome = new Detail(customer.totalPayableTaxKey(), customer.taxFilingDate());
@@ -54,9 +57,6 @@ public class DetailCustomer {
         // total paid tax
         Detail totalPaidTax = new Detail(customer.totalPaidTaxKey(), customer.taxFilingDate());
         detailList.add(totalPaidTax);
-        // total income
-        Detail income = new Detail(customer.incomeKey(), customer.getGrossIncome());
-        detailList.add(income);
         return detailList;
     }
 }

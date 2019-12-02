@@ -1,7 +1,6 @@
 package com.example.c0761706_f2019_mad3125_midterm.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -17,7 +16,6 @@ import android.widget.DatePicker;
 import android.widget.RadioGroup;
 
 import com.example.c0761706_f2019_mad3125_midterm.Models.CRACustomer;
-import com.example.c0761706_f2019_mad3125_midterm.Models.Detail;
 import com.example.c0761706_f2019_mad3125_midterm.R;
 import com.example.c0761706_f2019_mad3125_midterm.Utilities.DetailCustomer;
 import com.google.android.material.textfield.TextInputEditText;

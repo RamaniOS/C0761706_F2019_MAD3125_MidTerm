@@ -5,13 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.c0761706_f2019_mad3125_midterm.Adapter.DetailAdapter;
 import com.example.c0761706_f2019_mad3125_midterm.Models.Detail;
 import com.example.c0761706_f2019_mad3125_midterm.R;
 
-import org.w3c.dom.ls.LSInput;
 
 import java.util.ArrayList;
 import java.util.List;

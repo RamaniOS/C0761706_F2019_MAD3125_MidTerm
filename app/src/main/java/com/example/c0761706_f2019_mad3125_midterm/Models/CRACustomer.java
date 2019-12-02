@@ -1,5 +1,8 @@
 package com.example.c0761706_f2019_mad3125_midterm.Models;
 
+import com.example.c0761706_f2019_mad3125_midterm.Utilities.Calculator;
+
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -14,6 +17,8 @@ public class CRACustomer {
     private String gender;
     private String grossIncome;
     private String rrspConrtibuted;
+
+    private static final int MAX_RSSP = 18000;
 
     public CRACustomer(String sin, String fName, String lName, String dob, String gender, String grossIncome, String rrspConrtibuted) {
         this.sin = sin;
@@ -153,7 +158,7 @@ public class CRACustomer {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        if(date == null) return "0";
+        if(date == null) return "0 Year";
         Calendar dob = Calendar.getInstance();
         Calendar today = Calendar.getInstance();
         dob.setTime(date);
@@ -165,10 +170,33 @@ public class CRACustomer {
         if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)){
             age--;
         }
-        return String.valueOf(age);
+        return String.valueOf(age) + " Years";
     }
 
     public String taxFilingDate() {
-        return "24-JAN-2020";
+        Calendar cal = Calendar.getInstance();
+        Date date = cal.getTime();
+        DateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+        String formattedDate = dateFormat.format(date);
+        return formattedDate.toUpperCase();
+    }
+
+    public String getCPP() {
+        if (grossIncome.trim().length() != 0)
+        return "$" + Calculator.performCPP(getGrossIncome());
+        else return "$0";
+    }
+
+    public String getEI() {
+        if (grossIncome.trim().length() != 0)
+            return "$" + Calculator.performEI(getGrossIncome());
+        else return "$0";
+    }
+
+    public String getRemainingRSSP() {
+        if ((getCPP() != null) && getEI() != null) return "$0";
+        double cpp = Double.parseDouble(getCPP());
+        double ei = Double.parseDouble(getEI());
+        return "$" + String.valueOf(cpp + ei);
     }
 }
