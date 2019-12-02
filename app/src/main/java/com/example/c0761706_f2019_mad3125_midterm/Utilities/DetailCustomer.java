@@ -34,7 +34,7 @@ public class DetailCustomer {
         Detail income = new Detail(customer.incomeKey(), "$" + customer.getGrossIncome());
         detailList.add(income);
         // federal tax
-        Detail fTax = new Detail(customer.fedralKey(), customer.taxFilingDate());
+        Detail fTax = new Detail(customer.fedralKey(), customer.getFedralTax());
         detailList.add(fTax);
         // province tax
         Detail pTax = new Detail(customer.provinceKey(), customer.getProviceTax());

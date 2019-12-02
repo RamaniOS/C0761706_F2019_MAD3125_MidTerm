@@ -182,4 +182,8 @@ public class CRACustomer {
     public String getProviceTax() {
         return Calculator.performProvinceTax(getTotalTaxableAmount());
     }
+
+    public String getFedralTax() {
+        return Calculator.performFedralTax(getTotalTaxableAmount());
+    }
 }

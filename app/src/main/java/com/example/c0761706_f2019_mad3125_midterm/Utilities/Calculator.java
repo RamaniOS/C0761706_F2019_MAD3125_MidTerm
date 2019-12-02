@@ -34,53 +34,36 @@ public class Calculator {
 
     public static String performProvinceTax(String income) {
         double taxAble = Double.parseDouble(income.replace("$", ""));
-        Log.d("TAx", String.valueOf(taxAble));
         double totalTax = 0;
-
         if (taxAble > 10582.0) {
             taxAble -= 10582;
             totalTax = 0;
             if (taxAble > 43906) {
                 totalTax += (33323.99 * 5.05) / 100;
                 taxAble -= 33323.99;
-                Log.d("FIRST", String.valueOf(totalTax));
                 if (taxAble > 87813) {
                     totalTax += (43906.99 * 9.15) / 100;
                     taxAble -= 43906.99;
-                    Log.d("Third", String.valueOf(totalTax));
                     if (taxAble > 150000) {
                         totalTax += (62186.99 * 11.16) / 100;
                         taxAble -= 62186.99;
-                        Log.d("five", String.valueOf(taxAble));
                         if (taxAble > 220000) {
                             totalTax += (69999.99 * 12.16) / 100;
                             taxAble -= 69999.99;
-                            Log.d("sev", String.valueOf(taxAble));
                             if (taxAble > 220000.01) {
-                                totalTax += (43906.99 * 12.16) / 100;
-                                taxAble -= 43906.99;
-                                Log.d("ei", String.valueOf(taxAble));
-                            } else {
                                 totalTax += (taxAble * 12.16) / 100;
-                                Log.d("ni", String.valueOf(totalTax));
                             }
                         } else {
                             totalTax += (taxAble * 12.16) / 100;
-                            Log.d("six", String.valueOf(totalTax));
                         }
                     } else {
                         totalTax += (taxAble * 11.16) / 100;
-                        Log.d("six", String.valueOf(totalTax));
-
                     }
                 } else {
                     totalTax += (taxAble * 9.15) / 100;
-                    Log.d("Fou", String.valueOf(totalTax));
                 }
             } else {
                 totalTax += (taxAble * 5.05) / 100;
-                Log.d("Sec", String.valueOf(totalTax));
-
             }
         }
         double roundOff = Math.round(totalTax * 100.0) / 100.0;
@@ -90,53 +73,36 @@ public class Calculator {
 
     public static String performFedralTax(String income) {
         double taxAble = Double.parseDouble(income.replace("$", ""));
-        Log.d("TAx", String.valueOf(taxAble));
         double totalTax = 0;
-
-        if (taxAble > 10582.0) {
-            taxAble -= 10582;
+        if (taxAble > 12069) {
+            taxAble -= 12069;
             totalTax = 0;
-            if (taxAble > 43906) {
-                totalTax += (33323.99 * 5.05) / 100;
-                taxAble -= 33323.99;
-                Log.d("FIRST", String.valueOf(totalTax));
-                if (taxAble > 87813) {
-                    totalTax += (43906.99 * 9.15) / 100;
-                    taxAble -= 43906.99;
-                    Log.d("Third", String.valueOf(totalTax));
-                    if (taxAble > 150000) {
-                        totalTax += (62186.99 * 11.16) / 100;
-                        taxAble -= 62186.99;
-                        Log.d("five", String.valueOf(taxAble));
-                        if (taxAble > 220000) {
-                            totalTax += (69999.99 * 12.16) / 100;
-                            taxAble -= 69999.99;
-                            Log.d("sev", String.valueOf(taxAble));
-                            if (taxAble > 220000.01) {
-                                totalTax += (43906.99 * 12.16) / 100;
-                                taxAble -= 43906.99;
-                                Log.d("ei", String.valueOf(taxAble));
-                            } else {
-                                totalTax += (taxAble * 12.16) / 100;
-                                Log.d("ni", String.valueOf(totalTax));
+            if (taxAble > 47630) {
+                totalTax += (35561 * 15) / 100;
+                taxAble -= 35561;
+                if (taxAble > 95259) {
+                    totalTax += (47628.99 * 20.50) / 100;
+                    taxAble -= 47628.99;
+                    if (taxAble > 147667) {
+                        totalTax += (52407.99 * 26) / 100;
+                        taxAble -= 52407.99;
+                        if (taxAble > 210371) {
+                            totalTax += (62703.99 * 29) / 100;
+                            taxAble -= 62703.99;
+                            if (taxAble > 210371.01) {
+                                totalTax += (taxAble * 33) / 100;
                             }
                         } else {
-                            totalTax += (taxAble * 12.16) / 100;
-                            Log.d("six", String.valueOf(totalTax));
+                            totalTax += (taxAble * 29) / 100;
                         }
                     } else {
-                        totalTax += (taxAble * 11.16) / 100;
-                        Log.d("six", String.valueOf(totalTax));
-
+                        totalTax += (taxAble * 26) / 100;
                     }
                 } else {
-                    totalTax += (taxAble * 9.15) / 100;
-                    Log.d("Fou", String.valueOf(totalTax));
+                    totalTax += (taxAble * 20.50) / 100;
                 }
             } else {
-                totalTax += (taxAble * 5.05) / 100;
-                Log.d("Sec", String.valueOf(totalTax));
-
+                totalTax += (taxAble * 15) / 100;
             }
         }
         double roundOff = Math.round(totalTax * 100.0) / 100.0;
