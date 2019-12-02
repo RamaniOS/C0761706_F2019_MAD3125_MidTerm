@@ -47,7 +47,8 @@ public class Calculator {
             return String.valueOf(EIAMOUNT_DEFAULT);
         } else {
             double value = (gross * 1.62) / 100;
-            return String.valueOf(value);
+            double roundOff = Math.round(value * 100.0) / 100.0;
+            return String.valueOf(roundOff);
         }
     }
 
