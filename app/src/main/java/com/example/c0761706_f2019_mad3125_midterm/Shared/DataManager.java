@@ -23,10 +23,17 @@ public class DataManager {
     private DataManager() {
         detailList = new ArrayList<>();
         CRACustomer customer1 = new CRACustomer("123456789", "John", "Doe", "12-Dec-1999", "Male", "100000", "20000");
-        List<Detail> detail = DetailCustomer.getDetails(customer1);
-        HomeDetail dummy = new HomeDetail(customer1.getSin(), customer1.fullName(), detail);
-        Log.d("Called", "again........");
-        detailList.add(dummy);
+        addNewCustomer(customer1);
+        CRACustomer customer2 = new CRACustomer("987654321", "David", "Warner", "09-Jan-2000", "FeMale", "200000", "18000");
+        addNewCustomer(customer2);
+        CRACustomer customer3 = new CRACustomer("567438787", "Ramanpreet", "Singh", "30-Nov-1997", "Male", "80000", "16000");
+        addNewCustomer(customer3);
+    }
+
+    public static void addNewCustomer(CRACustomer customer) {
+        List<Detail> detail1 = DetailCustomer.getDetails(customer);
+        HomeDetail homeDetail = new HomeDetail(customer.getSin(), customer.fullName(), detail1);
+        detailList.add(homeDetail);
     }
 
     public static List<HomeDetail> getHomeDetails() {
