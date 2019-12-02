@@ -8,11 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.c0761706_f2019_mad3125_midterm.Models.CRACustomer;
@@ -37,6 +37,7 @@ public class DetailEditActivity extends AppCompatActivity {
     private Button btnCalculate;
     private DatePickerDialog datePickerDialog;
     private RadioGroup radioGroup;
+    private RadioButton genderButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +55,6 @@ public class DetailEditActivity extends AppCompatActivity {
         txtRRSP = findViewById(R.id.txtRRSP);
         btnCalculate = findViewById(R.id.btnCalculate);
         radioGroup = findViewById(R.id.radioGroup);
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                onRadioButtonChanged(checkedId);
-            }
-        });
         txtBirthDate.setInputType(InputType.TYPE_NULL);
         txtBirthDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             public void onFocusChange(View v, boolean hasFocus) {
@@ -105,20 +100,6 @@ public class DetailEditActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    private void onRadioButtonChanged(int checkedId) {
-        switch (checkedId) {
-            case R.id.radioMale:
-                Log.d("kk", "MALE");
-                break;
-            case R.id.radioFeMale:
-                Log.d("ll", "FEMALE");
-                break;
-            case R.id.radioOther:
-                Log.d("kk", "OTHER");
-                break;
-        }
-    }
-
     private void closeKeyboard() {
         InputMethodManager inputManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
         inputManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
@@ -129,7 +110,9 @@ public class DetailEditActivity extends AppCompatActivity {
         String fName = txtFName.getText().toString();
         String lName = txtLName.getText().toString();
         String dob = txtBirthDate.getText().toString();
-        String gender = "MALE";
+        int selectedId = radioGroup.getCheckedRadioButtonId();
+        genderButton = findViewById(selectedId);
+        String gender = genderButton.getText().toString();
         String gross = txtGrossIncome.getText().toString();
         String rrsp = txtRRSP.getText().toString();
 
