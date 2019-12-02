@@ -96,60 +96,24 @@ public class CRACustomer {
         return sin;
     }
 
-    public void setSin(String sin) {
-        this.sin = sin;
-    }
-
-    public String getfName() {
-        return fName;
-    }
-
-    public void setfName(String fName) {
-        this.fName = fName;
-    }
-
     public String fullName() {
         return lName.toUpperCase() + ", " + fName.toLowerCase();
-    }
-
-    public String getlName() {
-        return lName;
-    }
-
-    public void setlName(String lName) {
-        this.lName = lName;
     }
 
     public String getDob() {
         return dob;
     }
 
-    public void setDob(String dob) {
-        this.dob = dob;
-    }
-
     public String getGender() {
         return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
     }
 
     public String getGrossIncome() {
         return grossIncome;
     }
 
-    public void setGrossIncome(String grossIncome) {
-        this.grossIncome = grossIncome;
-    }
-
     public String getRrspConrtibuted() {
         return rrspConrtibuted;
-    }
-
-    public void setRrspConrtibuted(String rrspConrtibuted) {
-        this.rrspConrtibuted = rrspConrtibuted;
     }
 
     public String getAge() {
