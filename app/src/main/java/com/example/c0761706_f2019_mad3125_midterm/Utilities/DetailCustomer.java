@@ -52,7 +52,7 @@ public class DetailCustomer {
         Detail caryRRsp = new Detail(customer.carryRRSPKey(), customer.getRemainingRSSP());
         detailList.add(caryRRsp);
         // total payable income
-        Detail totalPayIncome = new Detail(customer.totalPayableTaxKey(), customer.taxFilingDate());
+        Detail totalPayIncome = new Detail(customer.totalPayableTaxKey(), customer.getTotalTaxableAmount());
         detailList.add(totalPayIncome);
         // total paid tax
         Detail totalPaidTax = new Detail(customer.totalPaidTaxKey(), customer.taxFilingDate());

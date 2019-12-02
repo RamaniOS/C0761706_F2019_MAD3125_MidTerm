@@ -1,5 +1,6 @@
 package com.example.c0761706_f2019_mad3125_midterm.Adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,8 +36,14 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailView
             holder.bottomView.setVisibility(View.GONE);
         }
         Detail detail = items.get(position);
+        if ((detail.getValue() == null) && detail.getValue().trim().length() == 0) return;
         holder.txtKey.setText(detail.getKey());
         holder.txtValue.setText(detail.getValue());
+//        if (Double.parseDouble(detail.getValue())<0) {
+//            holder.txtValue.setTextColor(Color.RED);
+//        } else {
+//            holder.txtValue.setTextColor(Color.BLACK);
+//        }
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.example.c0761706_f2019_mad3125_midterm.Models;
 
+import android.util.Log;
+
 import com.example.c0761706_f2019_mad3125_midterm.Utilities.Calculator;
 
 import java.text.DateFormat;
@@ -39,7 +41,7 @@ public class CRACustomer {
     }
 
     public String birthDateKey() {
-        return  "Birth Of Date";
+        return "Birth Of Date";
     }
 
     public String genderKey() {
@@ -158,16 +160,16 @@ public class CRACustomer {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        if(date == null) return "0 Year";
+        if (date == null) return "0 Year";
         Calendar dob = Calendar.getInstance();
         Calendar today = Calendar.getInstance();
         dob.setTime(date);
         int year = dob.get(Calendar.YEAR);
         int month = dob.get(Calendar.MONTH);
         int day = dob.get(Calendar.DAY_OF_MONTH);
-        dob.set(year, month+1, day);
+        dob.set(year, month + 1, day);
         int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
-        if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)){
+        if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)) {
             age--;
         }
         return String.valueOf(age) + " Years";
@@ -183,7 +185,7 @@ public class CRACustomer {
 
     public String getCPP() {
         if (grossIncome.trim().length() != 0)
-        return "$" + Calculator.performCPP(getGrossIncome());
+            return "$" + Calculator.performCPP(getGrossIncome());
         else return "$0";
     }
 
@@ -194,9 +196,22 @@ public class CRACustomer {
     }
 
     public String getRemainingRSSP() {
-        if ((getCPP() != null) && getEI() != null) return "$0";
-        double cpp = Double.parseDouble(getCPP());
-        double ei = Double.parseDouble(getEI());
-        return "$" + String.valueOf(cpp + ei);
+        if (getRrspConrtibuted() == null) return "$0";
+        double rrsp = Double.parseDouble(getRrspConrtibuted());
+        double remaining = MAX_RSSP - rrsp;
+        return "$" + remaining;
+    }
+
+    public String getTotalTaxableAmount() {
+        double cpp = Double.parseDouble(getCPP().replace("$", ""));
+        double ei = Double.parseDouble(getEI().replace("$", ""));
+        double contributed = Double.parseDouble(getRrspConrtibuted().replace("$", ""));
+        if (contributed > MAX_RSSP) {
+            contributed = MAX_RSSP;
+        }
+        double total = cpp + ei + contributed;
+        double gross = Double.parseDouble(getGrossIncome());
+        double totalTaxable = gross - total;
+        return "$" + totalTaxable;
     }
 }
