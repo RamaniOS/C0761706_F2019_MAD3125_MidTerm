@@ -102,7 +102,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
-                app:errorEnabled="true">
+                app:errorEnabled="true"
+                app:errorTextAppearance="@style/style_error_appearance">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtBirthDate"
