@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.example.c0761706_f2019_mad3125_midterm.Models.CRACustomer;
 import com.example.c0761706_f2019_mad3125_midterm.R;
@@ -45,6 +46,7 @@ public class DetailEditActivity extends AppCompatActivity {
     private RadioGroup radioGroup;
     private RadioButton genderButton;
     private TextInputLayout birthLayout;
+    private TextView txtAge;
 
     private static final String ERROR_MESSAGE = "Not eligible to file tax for current year 2019";
     public static final String INTENT_KEY = "details";
@@ -67,6 +69,7 @@ public class DetailEditActivity extends AppCompatActivity {
         radioGroup = findViewById(R.id.radioGroup);
         txtBirthDate.setInputType(InputType.TYPE_NULL);
         birthLayout = findViewById(R.id.textInputLayout4);
+        txtAge = findViewById(R.id.txtAge);
         txtBirthDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
@@ -159,6 +162,7 @@ public class DetailEditActivity extends AppCompatActivity {
     private void checkEligibleDob() {
         String dob = txtBirthDate.getText().toString();
         int age = Integer.parseInt(Calculator.getAge(dob));
+        txtAge.setText("Age: " + age);
         if (age < 18) {
             birthLayout.setError(ERROR_MESSAGE.toUpperCase());
         } else {

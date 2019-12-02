@@ -113,6 +113,19 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Gender -->
+
+            <TextView
+                android:id="@+id/txtAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/adamina"
+                android:text="Age"
+                android:textColor="@color/design_default_color_on_secondary"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
+
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
@@ -120,6 +133,7 @@
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-medium"
                 android:text="Gender"
+                android:textColor="@color/design_default_color_on_secondary"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/radioGroup"
                 app:layout_constraintStart_toStartOf="parent"
@@ -130,6 +144,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toEndOf="@+id/textView2"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
