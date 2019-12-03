@@ -1,7 +1,5 @@
 package com.example.c0761706_f2019_mad3125_midterm.Shared;
 
-import android.util.Log;
-
 import com.example.c0761706_f2019_mad3125_midterm.Models.CRACustomer;
 import com.example.c0761706_f2019_mad3125_midterm.Models.Detail;
 import com.example.c0761706_f2019_mad3125_midterm.Models.HomeDetail;
