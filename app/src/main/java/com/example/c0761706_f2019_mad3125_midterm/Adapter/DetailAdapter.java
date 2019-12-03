@@ -1,8 +1,6 @@
 package com.example.c0761706_f2019_mad3125_midterm.Adapter;
 
-import android.app.Notification;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
