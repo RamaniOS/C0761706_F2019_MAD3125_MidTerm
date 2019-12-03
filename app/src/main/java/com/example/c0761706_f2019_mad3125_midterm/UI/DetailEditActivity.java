@@ -130,7 +130,6 @@ public class DetailEditActivity extends AppCompatActivity {
         String gender = genderButton.getText().toString();
         String gross = txtGrossIncome.getText().toString();
         String rrsp = txtRRSP.getText().toString();
-
         // check dob
         checkEligibleDob();
         // Validations
