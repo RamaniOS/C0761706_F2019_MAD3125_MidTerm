@@ -133,7 +133,7 @@ public class DetailEditActivity extends AppCompatActivity {
 
         // check dob
         checkEligibleDob();
-
+        // Validations
         if (sin.trim().length() != 9) {
             showAlert("SIN Should be of 9 digits.");
         } else if (fName.trim().isEmpty()) {
