@@ -94,7 +94,6 @@ public class DetailEditActivity extends AppCompatActivity {
     }
 
     private void openDatePicker() {
-
         final Calendar calendar = Calendar.getInstance();
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         final int month = calendar.get(Calendar.MONTH);

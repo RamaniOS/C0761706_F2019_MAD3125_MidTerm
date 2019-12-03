@@ -19,11 +19,11 @@
         </activity>
         <activity
             android:name=".UI.ShowDetailActivity"
-            android:label="Show Details"
+            android:label="Tax Details"
             android:parentActivityName=".UI.HomeActivity"></activity>
         <activity
             android:name=".UI.DetailEditActivity"
-            android:label="Enter Details"
+            android:label="Enter Tax Details"
             android:parentActivityName=".UI.HomeActivity">
         </activity>
 
