@@ -56,7 +56,6 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.action_add:
                 Intent intent = new Intent(this, DetailEditActivity.class);
                 startActivity(intent);
-                break;
         }
         return super.onOptionsItemSelected(item);
     }
