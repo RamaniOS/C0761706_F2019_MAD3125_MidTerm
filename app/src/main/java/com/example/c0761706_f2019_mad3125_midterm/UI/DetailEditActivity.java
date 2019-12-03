@@ -184,9 +184,7 @@ public class DetailEditActivity extends AppCompatActivity {
         });
         alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
+            public void onClick(DialogInterface dialog, int which) {}
         });
         AlertDialog alert = alertDialogBuilder.create();
         alert.show();
