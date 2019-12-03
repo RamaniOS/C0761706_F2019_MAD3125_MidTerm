@@ -152,6 +152,7 @@ public class CRACustomer {
         if (contributed > getMaxRRSP()) {
             contributed = getMaxRRSP();
         }
+
         double total = cpp + ei + getMaxRRSP();
         double gross = Double.parseDouble(getGrossIncome());
         double totalTaxable = gross - total;
