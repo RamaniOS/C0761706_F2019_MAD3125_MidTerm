@@ -6,10 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,7 +15,6 @@ import com.example.c0761706_f2019_mad3125_midterm.Adapter.HomeAdapter;
 import com.example.c0761706_f2019_mad3125_midterm.Models.HomeDetail;
 import com.example.c0761706_f2019_mad3125_midterm.R;
 import com.example.c0761706_f2019_mad3125_midterm.Shared.DataManager;
-import com.example.c0761706_f2019_mad3125_midterm.Utilities.DetailCustomer;
 
 import java.util.ArrayList;
 import java.util.List;
