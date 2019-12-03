@@ -12,8 +12,7 @@ public class Calculator {
     private static final int MAX_EIAMOUNT = 53100;
     private static final double EIAMOUNT_DEFAULT = 860.22;
 
-    private Calculator() {
-    }
+    private Calculator() {}
 
     public static String getAge(String birthDate) {
         Date date = null;
