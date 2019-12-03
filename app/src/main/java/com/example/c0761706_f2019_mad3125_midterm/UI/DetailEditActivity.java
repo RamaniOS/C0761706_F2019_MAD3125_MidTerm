@@ -150,8 +150,10 @@ public class DetailEditActivity extends AppCompatActivity {
             showAlert("Please enter RRSP contribution");
         } else {
             CRACustomer customer = new CRACustomer(sin, fName, lName, dob, gender, gross, rrsp);
+            // Added to shared class
             DataManager.addNewCustomer(customer);
             List list = DetailCustomer.getDetails(customer);
+            // Push to next
             Intent intent = new Intent(this, ShowDetailActivity.class);
             intent.putParcelableArrayListExtra(INTENT_KEY, (ArrayList<? extends Parcelable>) list);
             startActivity(intent);
