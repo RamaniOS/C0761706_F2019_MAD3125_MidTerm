@@ -168,7 +168,8 @@ public class CRACustomer {
     public String getTotalTax() {
         double pT = Double.parseDouble(getProviceTax().replace("$", ""));
         double fT = Double.parseDouble(getFedralTax().replace("$", ""));
-        return "$" + (pT+fT);
+        double roundOff = Math.round((pT+fT) * 100.0) / 100.0;
+        return "$" + roundOff;
     }
 
     public double getMaxRRSP() {
