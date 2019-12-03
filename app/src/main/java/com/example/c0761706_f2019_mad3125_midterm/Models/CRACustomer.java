@@ -1,6 +1,8 @@
 package com.example.c0761706_f2019_mad3125_midterm.Models;
 
 
+import android.util.Log;
+
 import com.example.c0761706_f2019_mad3125_midterm.Utilities.Calculator;
 
 import java.text.DateFormat;
@@ -150,7 +152,7 @@ public class CRACustomer {
         if (contributed > getMaxRRSP()) {
             contributed = getMaxRRSP();
         }
-        double total = cpp + ei + contributed;
+        double total = cpp + ei + getMaxRRSP();
         double gross = Double.parseDouble(getGrossIncome());
         double totalTaxable = gross - total;
         double roundOff = Math.round(totalTaxable * 100.0) / 100.0;
